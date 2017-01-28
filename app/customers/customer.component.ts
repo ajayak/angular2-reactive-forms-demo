@@ -30,6 +30,8 @@ export class CustomerComponent implements OnInit {
             firstName: ['', [Validators.required, Validators.minLength(3)]],
             lastName: ['', [Validators.required, Validators.maxLength(50)]],
             email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
+            phone: '',
+            notification: 'email',
             sendCatalog: false
         });
     }
@@ -40,5 +42,15 @@ export class CustomerComponent implements OnInit {
             lastName: 'asds',
             email: 'asd@a.com'
         });
+    }
+
+    setNotification(notifyBy: string) {
+        var phone = this.customerForm.get('phone');
+        if (notifyBy === 'text') {
+            phone.setValidators([Validators.required]);
+        } else {
+            phone.clearValidators();
+        }
+        phone.updateValueAndValidity();
     }
 }
