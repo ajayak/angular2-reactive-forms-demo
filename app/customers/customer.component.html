@@ -17,8 +17,6 @@
                                    id="firstNameId"
                                    type="text"
                                    placeholder="First Name (required)"
-                                   required
-                                   minlength="3"
                                    formControlName="firstName" />
                             <span class="help-block"
                                   *ngIf="(customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && customerForm.get('firstName').errors">
@@ -40,8 +38,6 @@
                        id="lastNameId"
                        type="text"
                        placeholder="Last Name (required)"
-                       required
-                       maxlength="50"
                        formControlName="lastName" />
                 <span class="help-block"
                       *ngIf="(customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && customerForm.get('lastName').errors">
@@ -60,8 +56,6 @@
                    id="emailId"
                    type="email"
                    placeholder="Email (required)"
-                   required
-                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+"
                    formControlName="email" />
             <span class="help-block"
                   *ngIf="(customerForm.get('email').touched || customerForm.get('email').dirty) && customerForm.get('email').errors">

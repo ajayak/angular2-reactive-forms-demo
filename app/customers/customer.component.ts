@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import {
+    Component,
+    OnInit
+} from '@angular/core';
+import {
+    FormGroup,
+    FormBuilder,
+    Validators
+} from '@angular/forms';
 
 import { Customer } from './customer';
 
@@ -20,9 +27,9 @@ export class CustomerComponent implements OnInit {
 
     ngOnInit(): void {
         this.customerForm = this.fb.group({
-            firstName: '',
-            lastName: { value: 'n/a', disabled: true },
-            email: '',
+            firstName: ['', [Validators.required, Validators.minLength(3)]],
+            lastName: ['', [Validators.required, Validators.maxLength(50)]],
+            email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]],
             sendCatalog: false
         });
     }
@@ -31,7 +38,7 @@ export class CustomerComponent implements OnInit {
         this.customerForm.patchValue({
             firstName: 'wsdsa',
             lastName: 'asds',
-            email: 'asd!@a'
+            email: 'asd@a.com'
         });
     }
 }
