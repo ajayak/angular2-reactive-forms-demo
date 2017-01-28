@@ -47,43 +47,66 @@
                     </span>
             </div>
 </div>
-<div class="form-group"
-     [ngClass]="{'has-error': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid }">
-    <label class="col-md-2 control-label"
-           for="emailId">Email</label>
-        <div class="col-md-8">
-            <input class="form-control"
-                   id="emailId"
-                   type="email"
-                   placeholder="Email (required)"
-                   formControlName="email" />
-            <span class="help-block"
-                  *ngIf="(customerForm.get('email').touched || customerForm.get('email').dirty) && customerForm.get('email').errors">
-                <span *ngIf="customerForm.get('email').errors.required">
+<div formGroupName="emailGroup"
+     [ngClass]="{'has-error': customerForm.get('emailGroup').errors}">
+    <div class="form-group"
+         [ngClass]="{'has-error': (customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && !customerForm.get('emailGroup.email').valid }">
+        <label class="col-md-2 control-label"
+               for="emailId">Email</label>
+            <div class="col-md-8">
+                <input class="form-control"
+                       id="emailId"
+                       type="email"
+                       placeholder="Email (required)"
+                       formControlName="email" />
+                <span class="help-block"
+                      *ngIf="(customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && customerForm.get('emailGroup.email').errors">
+                    <span *ngIf="customerForm.get('emailGroup.email').errors.required">
                                 Please enter your email address.
                             </span>
-                <span *ngIf="customerForm.get('email').errors.pattern">
+                    <span *ngIf="customerForm.get('emailGroup.email').errors.pattern">
                                 Please enter a valid email address.
                             </span>
-                <!-- This one does not work -->
-                <span *ngIf="customerForm.get('email').errors.email">
+                    <!-- This one does not work -->
+                    <span *ngIf="customerForm.get('emailGroup.email').errors.email">
                                 Please enter a valid email address.
                             </span>
-                </span>
-        </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-1 col-md-8 checkbox">
-                <label>
+                    </span>
+            </div>
+            </div>
+
+
+            <div class="form-group"
+                 [ngClass]="{'has-error': (customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && !customerForm.get('emailGroup.confirmEmail').valid }">
+                <label class="col-md-2 control-label"
+                       for="confirmEmailId">Confirm Email</label>
+                    <div class="col-md-8">
+                        <input class="form-control"
+                               id="confirmEmailId"
+                               type="confirmEmail"
+                               placeholder="confirm Email (required)"
+                               formControlName="confirmEmail" />
+                        <span class="help-block"
+                              *ngIf="(customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && customerForm.get('emailGroup.confirmEmail').errors">
+                            <span *ngIf="customerForm.get('emailGroup.confirmEmail').errors.required">
+                                Please confirm your Email address.
+                            </span>
+                            </span>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-1 col-md-8 checkbox">
+                            <label>
                             <input id="sendCatalogId"
                                    type="checkbox"
                                    [(ngModel)]="customer.sendCatalog"
                                    formControlName="sendCatalog" >
                             Send me your catalog
                         </label>
-            </div>
-        </div>
-        <!--<div *ngIf="customer.sendCatalog">
+                        </div>
+                    </div>
+                    <!--<div *ngIf="customer.sendCatalog">
             <div class="form-group">
                 <label class="col-md-2 control-label">Address Type</label>
                 <div class="col-md-8">
@@ -169,30 +192,30 @@
             </div>
         </div>-->
 
-        <div class="form-group"
-             [ngClass]="{'has-error': (customerForm.get('phone').touched || customerForm.get('phone').dirty) && !customerForm.get('phone').valid }">
-            <label class="col-md-2 control-label"
-                   for="phoneId">Phone Number</label>
-                <div class="col-md-8">
-                    <input class="form-control"
-                           id="phoneId"
-                           type="tel"
-                           placeholder="Phone"
-                           formControlName="phone" />
-                    <span class="help-block"
-                          *ngIf="(customerForm.get('phone').touched || customerForm.get('phone').dirty) && customerForm.get('phone').errors">
-                        <span *ngIf="customerForm.get('phone').errors.required">
+                    <div class="form-group"
+                         [ngClass]="{'has-error': (customerForm.get('phone').touched || customerForm.get('phone').dirty) && !customerForm.get('phone').valid }">
+                        <label class="col-md-2 control-label"
+                               for="phoneId">Phone Number</label>
+                            <div class="col-md-8">
+                                <input class="form-control"
+                                       id="phoneId"
+                                       type="tel"
+                                       placeholder="Phone"
+                                       formControlName="phone" />
+                                <span class="help-block"
+                                      *ngIf="(customerForm.get('phone').touched || customerForm.get('phone').dirty) && customerForm.get('phone').errors">
+                                    <span *ngIf="customerForm.get('phone').errors.required">
                                 Please enter your phone number.
                             </span>
-                        </span>
-                </div>
-                </div>
+                                    </span>
+                            </div>
+                            </div>
 
-                <div class="form-group">
-                    <label class="col-md-2 control-label">
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">
                         Send Notifications</label>
-                    <div class="col-md-8">
-                        <label class="radio-inline">
+                                <div class="col-md-8">
+                                    <label class="radio-inline">
                             <input 
                                type="radio"
                                value="email"
@@ -200,7 +223,7 @@
                                (click)="setNotification('email')" />
                                Email
                         </label>
-                        <label class="radio-inline">
+                                    <label class="radio-inline">
                             <input 
                                type="radio"
                                value="text"
@@ -208,31 +231,31 @@
                                (click)="setNotification('text')"/>
                                Text
                         </label>
-                    </div>
-                </div>
+                                </div>
+                            </div>
 
-                <div class="form-group"
-                     [ngClass]="{'has-error': (customerForm.get('rating').touched || customerForm.get('rating').dirty) && !customerForm.get('rating').valid }">
-                    <label class="col-md-2 control-label"
-                           for="ratingId">Rating</label>
-                        <div class="col-md-8">
-                            <input class="form-control"
-                                   id="ratingId"
-                                   type="tel"
-                                   placeholder="Rating"
-                                   formControlName="rating" />
-                            <span class="help-block"
-                                  *ngIf="(customerForm.get('rating').touched || customerForm.get('rating').dirty) && customerForm.get('rating').errors">
-                                <span *ngIf="customerForm.get('rating').errors.range">
+                            <div class="form-group"
+                                 [ngClass]="{'has-error': (customerForm.get('rating').touched || customerForm.get('rating').dirty) && !customerForm.get('rating').valid }">
+                                <label class="col-md-2 control-label"
+                                       for="ratingId">Rating</label>
+                                    <div class="col-md-8">
+                                        <input class="form-control"
+                                               id="ratingId"
+                                               type="tel"
+                                               placeholder="Rating"
+                                               formControlName="rating" />
+                                        <span class="help-block"
+                                              *ngIf="(customerForm.get('rating').touched || customerForm.get('rating').dirty) && customerForm.get('rating').errors">
+                                            <span *ngIf="customerForm.get('rating').errors.range">
                                 Please enter your Rating from 1 to 5.
                             </span>
-                                </span>
-                        </div>
-                        </div>
+                                            </span>
+                                    </div>
+                                    </div>
 
-                        <div class="form-group">
-                            <div class="col-md-4 col-md-offset-2">
-                                <span>
+                                    <div class="form-group">
+                                        <div class="col-md-4 col-md-offset-2">
+                                            <span>
                             <button class="btn btn-primary"
                                     type="submit"
                                     [disabled]="!customerForm.valid">
@@ -244,13 +267,13 @@
                                 Set Values
                             </button>
                         </span>
-                            </div>
-                        </div>
-                        </fieldset>
-                        </form>
-                        </div>
-                        </div>
-                        <br>Dirty: {{ customerForm.dirty }}
-                        <br>Touched: {{ customerForm.touched }}
-                        <br>Valid: {{ customerForm.valid }}
-                        <br>Value: {{ customerForm.value | json }}
+                                        </div>
+                                    </div>
+                                    </fieldset>
+                                    </form>
+                                    </div>
+                                    </div>
+                                    <br>Dirty: {{ customerForm.dirty }}
+                                    <br>Touched: {{ customerForm.touched }}
+                                    <br>Valid: {{ customerForm.valid }}
+                                    <br>Value: {{ customerForm.value | json }}
