@@ -21,14 +21,14 @@ export class CustomerComponent implements OnInit {
     ngOnInit(): void {
         this.customerForm = this.fb.group({
             firstName: '',
-            lastName: '',
+            lastName: { value: 'n/a', disabled: true },
             email: '',
             sendCatalog: false
         });
     }
 
     fillValues() {
-        this.customerForm.setValue({
+        this.customerForm.patchValue({
             firstName: 'wsdsa',
             lastName: 'asds',
             email: 'asd!@a'
