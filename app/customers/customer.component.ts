@@ -9,6 +9,7 @@ import {
     AbstractControl,
     ValidatorFn
 } from '@angular/forms';
+import 'rxjs/add/operator/debounceTime';
 
 import { Customer } from './customer';
 
@@ -73,6 +74,7 @@ export class CustomerComponent implements OnInit {
 
         var emailControl = this.customerForm.get('emailGroup.email');
         emailControl.valueChanges
+            .debounceTime(1000)
             .subscribe(value => this.setMessage(emailControl));
     }
 
