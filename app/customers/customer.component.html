@@ -74,8 +74,6 @@
                     </span>
             </div>
             </div>
-
-
             <div class="form-group"
                  [ngClass]="{'has-error': (customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && !customerForm.get('emailGroup.confirmEmail').valid }">
                 <label class="col-md-2 control-label"
@@ -98,12 +96,11 @@
                     <div class="form-group">
                         <div class="col-md-offset-1 col-md-8 checkbox">
                             <label>
-                            <input id="sendCatalogId"
-                                   type="checkbox"
-                                   [(ngModel)]="customer.sendCatalog"
-                                   formControlName="sendCatalog" >
-                            Send me your catalog
-                        </label>
+                                <input id="sendCatalogId"
+                                       type="checkbox"
+                                       [(ngModel)]="customer.sendCatalog"
+                                       formControlName="sendCatalog"> Send me your catalog
+                            </label>
                         </div>
                     </div>
                     <!--<div *ngIf="customer.sendCatalog">
@@ -191,7 +188,6 @@
                     </div>
             </div>
         </div>-->
-
                     <div class="form-group"
                          [ngClass]="{'has-error': (customerForm.get('phone').touched || customerForm.get('phone').dirty) && !customerForm.get('phone').valid }">
                         <label class="col-md-2 control-label"
@@ -210,30 +206,22 @@
                                     </span>
                             </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="col-md-2 control-label">
-                        Send Notifications</label>
+                                    Send Notifications</label>
                                 <div class="col-md-8">
                                     <label class="radio-inline">
-                            <input 
-                               type="radio"
-                               value="email"
-                               formControlName="notification"
-                               (click)="setNotification('email')" />
-                               Email
-                        </label>
+                                        <input type="radio"
+                                               value="email"
+                                               formControlName="notification" /> Email
+                                    </label>
                                     <label class="radio-inline">
-                            <input 
-                               type="radio"
-                               value="text"
-                               formControlName="notification" 
-                               (click)="setNotification('text')"/>
-                               Text
-                        </label>
+                                        <input type="radio"
+                                               value="text"
+                                               formControlName="notification" /> Text
+                                    </label>
                                 </div>
                             </div>
-
                             <div class="form-group"
                                  [ngClass]="{'has-error': (customerForm.get('rating').touched || customerForm.get('rating').dirty) && !customerForm.get('rating').valid }">
                                 <label class="col-md-2 control-label"
@@ -252,7 +240,6 @@
                                             </span>
                                     </div>
                                     </div>
-
                                     <div class="form-group">
                                         <div class="col-md-4 col-md-offset-2">
                                             <span>
@@ -267,6 +254,7 @@
                                 Set Values
                             </button>
                         </span>
+
                                         </div>
                                     </div>
                                     </fieldset>
