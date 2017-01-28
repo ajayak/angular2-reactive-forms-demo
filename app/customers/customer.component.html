@@ -89,96 +89,93 @@
                             <label>
                                 <input id="sendCatalogId"
                                        type="checkbox"
-                                       [(ngModel)]="customer.sendCatalog"
                                        formControlName="sendCatalog"> Send me your catalog
                             </label>
                         </div>
                     </div>
-                    <!--<div *ngIf="customer.sendCatalog">
-            <div class="form-group">
-                <label class="col-md-2 control-label">Address Type</label>
-                <div class="col-md-8">
-                    <label class="radio-inline">
-                        <input type="radio" id="addressType1Id" value="home"
-                                [(ngModel)]="customer.addressType"
-                                formControlName="addressType">Home
+                    <div *ngIf="customerForm.get('sendCatalog').value">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Address Type</label>
+                            <div class="col-md-8">
+                                <label class="radio-inline">
+                                    <input type="radio"
+                                           id="addressType1Id"
+                                           value="home"
+                                           formControlName="addressType">Home
                                 </label>
-                    <label class="radio-inline">
-                                    <input type="radio" id="addressType1Id" value="work"
-                                           [(ngModel)]="customer.addressType"
+                                <label class="radio-inline">
+                                    <input type="radio"
+                                           id="addressType1Id"
+                                           value="work"
                                            formControlName="addressType">Work
                                 </label>
-                    <label class="radio-inline">
-                                    <input type="radio" id="addressType1Id" value="other"
-                                           [(ngModel)]="customer.addressType"
+                                <label class="radio-inline">
+                                    <input type="radio"
+                                           id="addressType1Id"
+                                           value="other"
                                            formControlName="addressType">Other
                                 </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label"
-                       for="street1Id">Street Address 1</label>
-                    <div class="col-md-8">
-                        <input type="text"
-                               class="form-control"
-                               id="street1Id"
-                               placeholder="Street address"
-                               [(ngModel)]="customer.street1"
-                               formControlName="street1">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"
+                                   for="street1Id">Street Address 1</label>
+                                <div class="col-md-8">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="street1Id"
+                                           placeholder="Street address"
+                                           formControlName="street1">
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"
+                                   for="street2Id">Street Address 2</label>
+                                <div class="col-md-8">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="street2Id"
+                                           placeholder="Street address (second line)"
+                                           formControlName="street2">
+                                </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label"
+                                   for="cityId">City, State, Zip Code</label>
+                                <div class="col-md-3">
+                                    <input type="text"
+                                           class="form-control"
+                                           id="cityId"
+                                           placeholder="City"
+                                           formControlName="city">
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="form-control"
+                                            id="stateId"
+                                            formControlName="state">
+                                        <option value=""
+                                                disabled
+                                                selected
+                                                hidden>Select a State...</option>
+                                            <option value="AL">Alabama</option>
+                                            <option value="AK">Alaska</option>
+                                            <option value="AZ">Arizona</option>
+                                            <option value="AR">Arkansas</option>
+                                            <option value="CA">California</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="WI">Wisconsin</option>
+                                            <option value="WY">Wyoming</option>
+                                            </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="number"
+                                           class="form-control"
+                                           id="zipId"
+                                           placeholder="Zip Code"
+                                           formControlName="zip">
+                                </div>
+                        </div>
                     </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label"
-                       for="street2Id">Street Address 2</label>
-                    <div class="col-md-8">
-                        <input type="text"
-                               class="form-control"
-                               id="street2Id"
-                               placeholder="Street address (second line)"
-                               [(ngModel)]="customer.street2"
-                               formControlName="street2">
-                    </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-2 control-label"
-                       for="cityId">City, State, Zip Code</label>
-                    <div class="col-md-3">
-                        <input type="text"
-                               class="form-control"
-                               id="cityId"
-                               placeholder="City"
-                               [(ngModel)]="customer.city"
-                               formControlName="city">
-                    </div>
-                    <div class="col-md-3">
-                        <select class="form-control"
-                                id="stateId"
-                                [(ngModel)]="customer.state"
-                                formControlName="state">
-                            <option value=""
-                                    disabled
-                                    selected
-                                    hidden>Select a State...</option>
-                                <option value="AL">Alabama</option>
-                                <option value="AK">Alaska</option>
-                                <option value="AZ">Arizona</option>
-                                <option value="AR">Arkansas</option>
-                                <option value="CA">California</option>
-                                <option value="CO">Colorado</option>
-                                <option value="WI">Wisconsin</option>
-                                <option value="WY">Wyoming</option>
-                                </select>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="number"
-                               class="form-control"
-                               id="zipId"
-                               placeholder="Zip Code"
-                               [(ngModel)]="customer.zip"
-                               formControlName="zip">
-                    </div>
-            </div>
-        </div>-->
                     <div class="form-group"
                          [ngClass]="{'has-error': (customerForm.get('phone').touched || customerForm.get('phone').dirty) && !customerForm.get('phone').valid }">
                         <label class="col-md-2 control-label"
